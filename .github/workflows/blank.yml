@@ -41,16 +41,19 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world! >> $GITHUB_WORKSPACE/README.md
+      - name: USD Rate
+        run: curl https://open.er-api.com/v6/latest/USD > usd_rate.json
+
+      - name: CNY Rate
+        run: curl https://open.er-api.com/v6/latest/CNY > cny_rate.json
 
       # 提交仓库
       - name: Commit changes
         run: |
           git config --local user.email "$GIT_EMAIL"
           git config --local user.name "$GIT_NAME"
-          git add README.md
-          git commit -m "update README.md"
+          git add .
+          git commit -m "update"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
