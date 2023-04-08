@@ -53,6 +53,13 @@ jobs:
       - name: CNY Rate
         run: curl https://open.er-api.com/v6/latest/CNY > cny_rate.json
 
+      # 将当前时间输出到README.md
+      - name: Update README.md
+        run: |
+          echo "## $(date)" >> README.md
+          echo "USD: $(cat usd_rate.json | jq '.rates.CNY')" >> README.md
+          echo "CNY: $(cat cny_rate.json | jq '.rates.USD')" >> README.md
+
       # 提交仓库
       - name: Commit changes
         run: |
