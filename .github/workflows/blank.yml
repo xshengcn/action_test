@@ -37,9 +37,11 @@ jobs:
       # 提交仓库
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
+        run: |
+          git config --global user.name "CI"
+          git config --global user.email auto@users.noreply.github.com
+          git add README.md
+          git commit -m "update README.md"
         with:
-          author_name: ${{ github.actor }}
-          author_email: ${{ github.actor }}@users.noreply.github.com
-          message: 'update README.md'
-          add: 'README.md'
+          github_token: ${{ secrets.MY_GITHUB_TOKEN }}
 
