@@ -57,10 +57,11 @@ jobs:
       # 使用coingecko获取市值排名前1000的加密以及当前价格,coingecko每页最多只能获取250条数据，所以要分4次获取
       - name: Get top 1000 crypto
         run: |
-          curl https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false > crypto.json
- #         curl https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=2&sparkline=false >> crypto.json
-  #        curl https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=3&sparkline=false >> crypto.json
-  #        curl https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=4&sparkline=false >> crypto.json
+          curl "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false&locale=zh" > crypto.json
+          curl "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=2&sparkline=false&locale=zh" >> crypto.json
+          curl "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=3&sparkline=false&locale=zh" >> crypto.json
+          curl "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=4&sparkline=false&locale=zh" >> crypto.json
+          
 
      
       # 将当前时间输出到README.md
