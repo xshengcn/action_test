@@ -40,6 +40,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      // 删除本地的usd_rate.json和cny_rate.json文件
+      - name: Delete local files
+        run: |
+          rm -f usd_rate.json
+          rm -f cny_rate.json
+
       # Runs a single command using the runners shell
       - name: USD Rate
         run: curl https://open.er-api.com/v6/latest/USD > usd_rate.json
