@@ -65,7 +65,7 @@ jobs:
       # 将当前时间输出到README.md
       - name: Update README.md
         run: |
-          echo "## $(TZ='Asia/Shanghai' date '+%Y年%m月%d日 %H:%M:%S')" 
+          echo "## $(TZ='Asia/Shanghai' date '+%Y年%m月%d日 %H:%M:%S')" > README.md
           echo "BTC: $(cat crypto.json | jq '.[0].current_price')" >> README.md
           echo "" >> README.md
           echo "ETH: $(cat crypto.json | jq '.[1].current_price')" >> README.md
