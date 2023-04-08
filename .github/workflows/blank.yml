@@ -57,8 +57,7 @@ jobs:
       - name: Update README.md
         run: |
           echo "## $(date)" >> README.md
-          echo "USD: $(cat usd_rate.json | jq '.rates.CNY')" >> README.md
-          echo "CNY: $(cat cny_rate.json | jq '.rates.USD')" >> README.md
+          echo "USD to CNY: $(cat usd_rate.json | jq '.rates.CNY')" >> README.md
 
       # 提交仓库
       - name: Commit changes
