@@ -13,7 +13,7 @@ name: CI
 # 每10分钟执行一次
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/30 * * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -43,6 +43,7 @@ jobs:
       # 删除本地的usd_rate.json和cny_rate.json文件
       - name: Delete local files
         run: |
+          rm -f README.md
           rm -f usd_rate.json
           rm -f cny_rate.json
           rm -f crypto.json
@@ -64,8 +65,11 @@ jobs:
       # 将当前时间输出到README.md
       - name: Update README.md
         run: |
-          echo "## $(date)" >> README.md
+          echo "## $(date)" > README.md
           echo "BTC: $(cat crypto.json | jq '.[0].current_price')" >> README.md
+          echo "" >> README.md
+          echo "ETH: $(cat crypto.json | jq '.[1].current_price')" >> README.md
+          echo "" >> README.md
           echo "USD to CNY: $(cat usd_rate.json | jq '.rates.CNY')" >> README.md
           # btc价格
 
