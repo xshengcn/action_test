@@ -58,9 +58,9 @@ jobs:
       - name: Get top 1000 crypto
         run: |
           curl https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false > crypto.json
-          curl https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=2&sparkline=false >> crypto.json
-          curl https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=3&sparkline=false >> crypto.json
-          curl https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=4&sparkline=false >> crypto.json
+ #         curl https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=2&sparkline=false >> crypto.json
+  #        curl https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=3&sparkline=false >> crypto.json
+  #        curl https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=4&sparkline=false >> crypto.json
 
      
       # 将当前时间输出到README.md
@@ -69,6 +69,7 @@ jobs:
           echo "## $(date)" >> README.md
           echo "BTC: $(cat crypto.json | jq '.[0].current_price')" >> README.md
           echo "USD to CNY: $(cat usd_rate.json | jq '.rates.CNY')" >> README.md
+          # btc价格
 
       # 提交仓库
       - name: Commit changes
