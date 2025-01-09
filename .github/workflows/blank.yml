@@ -13,7 +13,7 @@ name: CI
 # 每10分钟执行一次
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/120 * * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
